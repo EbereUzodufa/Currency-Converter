@@ -9,21 +9,23 @@
 </head>
 <body>
 	<header>
-		
+		<h2>Currency Converter</h2>
 	</header>
 	<main>
-		<div class="select-from">
-			<p>Convert From</p>
-			<select name="" id="currency-select-from" class="currency">
-				<option selected disabled>Choose Option</option>
-			</select>
-		</div>
-		<div class="select-to">
-			<p>To</p>
-			<select name="" id="currency-select-to" class="currency">
-				<option selected disabled>Choose Option</option>
-			</select>
-		</div>
+		<section class="conversion_selection">
+			<p id="convert_from">Convert From</p>
+			<div class="select-from">
+				<select name="" id="currency-select-from" class="currency">
+					<option selected disabled>Choose Option</option>
+				</select>
+			</div>
+			<p id="convert_to">To</p>
+			<div class="select-to">
+				<select name="" id="currency-select-to" class="currency">
+					<option selected disabled>Choose Option</option>
+				</select>
+			</div>
+		</section>
 		<button class="btn">Convert</button>
 		<div class="message"></div>
 	</main>
