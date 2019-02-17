@@ -143,5 +143,12 @@ p#currency_exchange_rate{
 		padding: 5px;
 	}
 
+	p#convert_from{
+		margin: 30px auto;
+	}
 
+	img.currency_country{
+		width: 200px;
+		height: 200px;
+	}
 }
