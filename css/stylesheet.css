@@ -31,7 +31,7 @@ h1#title{
 header{
 	width: 100%;
 	background-color: #fff;
-	height: 50px;
+	padding: 15px;
 }
 
 footer{
@@ -142,4 +142,6 @@ p#currency_exchange_rate{
 	select.currency{
 		padding: 5px;
 	}
+
+
 }
