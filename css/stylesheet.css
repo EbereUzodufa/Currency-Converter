@@ -70,3 +70,9 @@ select.currency{
 	text-align: center;
 	color: #000;
 }
+
+img.currency_country{
+	width: 75px;
+	height: 75px;
+	margin: auto;
+}
