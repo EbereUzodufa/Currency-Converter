@@ -56,6 +56,7 @@ footer>p{
 
 input#currency_amount, p#convert_from,p#convert_to, select.currency{
 	width: 100%;
+	margin-bottom: 10px;
 }
 
 main{
