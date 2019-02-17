@@ -30,3 +30,9 @@ h1#title{
 	color: #1CB8DB;
 	margin: auto;
 }
+
+header{
+	width: 100%;
+	background-color: #fff;
+	height: 50px;
+}
