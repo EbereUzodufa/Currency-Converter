@@ -114,3 +114,7 @@ p#currency_exchange_rate{
 	text-align: center;
 	color: #000;
 }
+
+@media screen and (min-width: 699px){
+	
+}
