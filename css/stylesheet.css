@@ -138,4 +138,8 @@ p#currency_exchange_rate{
 	div.select:last-child{
 		margin-right: 0px;
 	}
+
+	select.currency{
+		padding: 5px;
+	}
 }
