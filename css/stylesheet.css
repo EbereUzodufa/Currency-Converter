@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Pompiere|Roboto');
-body,section, div.select{
+body, main, section, div.select{
 	display: flex;
 	flex-wrap: wrap;
 }
