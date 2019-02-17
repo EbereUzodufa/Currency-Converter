@@ -8,23 +8,20 @@ body{
 	font-size: 20px;
 	background-color: #fafafa;
 	margin: 0px;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
 }
 
 p{
 	font-size: 1em;
 	width: 100%;
-	font-style: normal;
-	font-weight: normal;
-	line-height: normal;
 	text-align: center;
 	color: #000000;
 }
 
 h1#title{
 	font-family: Pompiere;
-	font-style: normal;
-	font-weight: normal;
-	line-height: normal;
 	font-size: 2em;
 	text-align: center;
 	color: #1CB8DB;
@@ -45,9 +42,6 @@ footer{
 
 footer>p{
 	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	line-height: normal;
 	font-size: 0.8em;
 	text-align: center;
 	color: #FFF;
@@ -68,4 +62,11 @@ input#currency_amount{
 	font-size: 1.2em;
 	text-align: center;
 	border: 1px solid #1CB8DB;
+}
+
+select.currency{
+	font-family: PoetsenOne;
+	font-size: 1.2em;
+	text-align: center;
+	color: #000;
 }
