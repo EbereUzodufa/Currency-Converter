@@ -155,4 +155,12 @@ p#currency_exchange_rate{
 	button.btn{
 		margin: 50px auto;
 	}
+
+	div.message{
+		height: 100px;
+	}
+
+	p#currency_exchange_rate{
+		margin-bottom: 50px;
+	}
 }
