@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Pompiere|Roboto');
-body,section{
+body,section, div.select{
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -76,3 +76,4 @@ img.currency_country{
 	height: 75px;
 	margin: auto;
 }
+
