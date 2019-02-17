@@ -40,5 +40,16 @@ header{
 footer{
 	width: 100%;
 	background-color: #1CB8DB;
-	height: 25px;
+	/*height: 25px;*/
+}
+
+footer>p{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 0.8em;
+	text-align: center;
+	color: #FFF;
+	margin: auto;
 }
