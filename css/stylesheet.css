@@ -18,3 +18,14 @@ p{
 	text-align: center;
 	color: #000000;
 }
+
+h1#title{
+	font-family: Pompiere;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 2em;
+	text-align: center;
+	color: #1CB8DB;
+	margin: auto;
+}
