@@ -82,8 +82,11 @@ button.btn{
 	font-size: 1.2em;
 	color: #000;
 	background-color: #1CB8DB;
-	margin: auto;
     border: 0px;
     padding: 5px;
-    width: 200px;
+}
+
+div.message, button.btn{
+	width: 100%;
+	margin: auto;
 }
