@@ -131,6 +131,7 @@ p#currency_exchange_rate{
 	}
 	
 	p#convert_to{
+		width: 35px;
 		margin: auto;
 	}
 
