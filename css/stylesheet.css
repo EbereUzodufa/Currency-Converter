@@ -61,3 +61,10 @@ input#currency_amount, p#convert_from,p#convert_to, select.currency{
 main{
 	margin: auto 30px;
 }
+
+input#currency_amount{
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.2em;
+	text-align: center;
+	border: 1px solid #1CB8DB;
+}
