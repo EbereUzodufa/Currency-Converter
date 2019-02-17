@@ -6,6 +6,7 @@ body,section{
 body{
 	font-size: 20px;
 	background-color: #fafafa;
+	margin: 0px;
 }
 
 p{
