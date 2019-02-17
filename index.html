@@ -40,8 +40,122 @@
 	<footer>
 		<p>Bembem</p>
 	</footer>
-	<script type="text/javascript">
-		
-	</script>
+	<script>
+      
+      const currencies = [{
+        id: 'USD', name: 'US Dollars'
+      }, {
+        id: 'UGX', name: 'Ugandan Shillings'
+      }, {
+        id: 'KES', name: 'Kenyan Shillings'
+      }, {
+        id: 'GHS', name: 'Ghanian Cedi'
+      }, {
+        id: 'ZAR', name: 'South African Rand'
+      }];
+      
+      const apiBase = 'https://free.currencyconverterapi.com/api/v6/';
+
+    const api = (currency) => `
+        ${apiBase}convert?q=${currency}_NGN&compact=ultra&apiKey=9c0b22c6d643b5762584`;
+      
+      const toast = (msg) => {
+        const toastr = document.querySelector('.messages');
+        if(!toastr) return;
+        
+        toastr.textContent = msg;
+        if(!toastr.classList.contains('on')) {
+          toastr.classList.add('on');
+        }
+      };
+      
+      const doneToasting = () => {
+        const toastr = document.querySelector('.messages');
+        if(!toastr) return;
+        
+        toastr.textContent = '';
+        toastr.classList.remove('on');
+      };
+      
+      const conversionSucceeded = (apiResponse) => {
+        if(!apiResponse) {
+          toast(`nothing to display ...`);
+          return;
+        }
+        
+        const [value] = Object.values(apiResponse)
+        
+        const btn = document.querySelector('button');
+        btn.removeAttribute('disabled');
+        
+        const display = document.querySelector('.conversion');
+        const formatter = new Intl.NumberFormat(
+          'en-NG', { style: 'currency', currency: 'NGN', minimumFractionDigits: 4 }
+        );
+        
+        display.textContent = formatter.format(value);
+        doneToasting();
+      };
+      
+      // declare populateCurrencies here      
+      
+      const getSelectedCurrency = () => {
+
+      const selected = document.querySelector('select');
+        let selectedItem = selected.options[selected.selectedIndex].value;
+        return selectedItem;
+      };
+            
+      const convert = (event) => {
+        toast(`preparing to convert ...`);
+        
+        const btn = event ? 
+              event.target : document.querySelector('button');
+        
+        const selected = getSelectedCurrency();
+        
+        if(!selected || selected.trim() === '' 
+           || !currencies.map(c => c.id).includes(selected)) return;
+        
+        btn.setAttribute('disabled', 'disabled');
+        toast(`converting ...`);
+        console.log('Selected is - ' + selected);
+        const endpoint = api(selected);
+        
+        fetch(endpoint)
+          .then(function(response){
+            console.log(response.clone().json());
+              return response.clone().json();
+          }).then(apiResponse=>
+          {
+            //console.log(apiResponse);
+            conversionSucceeded(apiResponse)
+          });    
+      };
+      
+      const populateCurrencies = () => {       
+        currencies.map(currency=>{
+            let option = document.createElement('option');
+          option.value = currency.id;         
+          option.innerHTML = currency.name;
+          document.querySelector('select').appendChild(option);
+        })
+      };
+   
+      const startApp = () => {
+        // call populateCurrencies here
+        populateCurrencies();
+        
+        // add a click listener to the button here
+        const btn = document.querySelector('button');
+        btn.addEventListener('click', function(event){
+          convert(event);
+          //alert('hello');
+        });
+      };
+      
+
+      startApp();
+    </script>
 </body>
 </html>
