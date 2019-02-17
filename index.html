@@ -15,7 +15,7 @@
 		<section class="conversion_selection">
 			<p id="convert_from">Convert From</p>
 			<div class="select-from select">
-				<input type="number" name="" id="currency_amount" placeholder="Enter the amount">
+				<input type="number" name="" id="currency_amount" placeholder="Enter the amount" value="1">
 				<select name="" id="currency-select-from" class="currency">
 					<option selected disabled>Choose Option</option>
 				</select>
@@ -40,6 +40,7 @@
 	<footer>
 		<p>Bembem</p>
 	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
       
       const currencies = [{
@@ -54,10 +55,12 @@
         id: 'ZAR', name: 'South African Rand'
       }];
       
+      let currencyUnitFrom;
+      let currencyUnitTo;
       const apiBase = 'https://free.currencyconverterapi.com/api/v6/';
 
-    const api = (currency) => `
-        ${apiBase}convert?q=${currency}_NGN&compact=ultra&apiKey=9c0b22c6d643b5762584`;
+    const api = (currencyFrom, currencyTo) => `
+        ${apiBase}convert?q=${currencyFrom}_${currencyTo}&compact=ultra&apiKey=9c0b22c6d643b5762584`;
       
       const toast = (msg) => {
         const toastr = document.querySelector('.messages');
@@ -88,39 +91,55 @@
         const btn = document.querySelector('button');
         btn.removeAttribute('disabled');
         
-        const display = document.querySelector('.conversion');
-        const formatter = new Intl.NumberFormat(
-          'en-NG', { style: 'currency', currency: 'NGN', minimumFractionDigits: 4 }
+         const display = document.querySelector('#currency_exchange_rate');
+         const result = document.querySelector('#conversion_result');
+         let amt = document.querySelector('#currency_amount').value;
+        const formatterTo = new Intl.NumberFormat(
+          'en-NG', { style: 'currency', currency: currencyUnitTo, minimumFractionDigits: 4 }
         );
-        
-        display.textContent = formatter.format(value);
+
+        const formatterFrom = new Intl.NumberFormat(
+          'en-NG', { style: 'currency', currency: currencyUnitFrom, minimumFractionDigits: 0 }
+        );
+
+        console.log('Value - '+value);
+        console.log('Amt - '+amt);
+        console.log('formatterTo - '+formatterTo);
+        display.textContent = formatterFrom.format(1) + ' - ' + formatterTo.format(value);
+        result.textContent = formatterTo.format(value*amt);
         doneToasting();
       };
       
       // declare populateCurrencies here      
-      
-      const getSelectedCurrency = () => {
-
-      const selected = document.querySelector('select');
-        let selectedItem = selected.options[selected.selectedIndex].value;
-        return selectedItem;
-      };
-            
-      const convert = (event) => {
+       const convert = (event) => {
         toast(`preparing to convert ...`);
         
         const btn = event ? 
               event.target : document.querySelector('button');
         
-        const selected = getSelectedCurrency();
+        const CurrencyFrom = getSelectedCurrency('select#currency-select-from');
+        const CurrencyTo = getSelectedCurrency('select#currency-select-to');
+
+        const selectedCurrencyFrom = CurrencyFrom.value;
+        const selectedCurrencyTo = CurrencyTo.value;
+
+        currencyUnitFrom = selectedCurrencyFrom;
+        currencyUnitTo = selectedCurrencyTo;
+
+        console.log(selectedCurrencyTo);
+        console.log('currencyUnitTo - ' + currencyUnitTo);
+        console.log('currencyUnitFrom - ' + currencyUnitFrom);
         
-        if(!selected || selected.trim() === '' 
-           || !currencies.map(c => c.id).includes(selected)) return;
+        if(!selectedCurrencyFrom || !selectedCurrencyTo || selectedCurrencyFrom.trim() === '' 
+           || selectedCurrencyTo.trim() === ''|| !currencies.map(c => c.id).includes(selectedCurrencyFrom) || !currencies.map(c => c.id).includes(selectedCurrencyTo)) {
+           	alert('Currency Missing. Please Choose');
+        	return;
+    	}
         
         btn.setAttribute('disabled', 'disabled');
         toast(`converting ...`);
-        console.log('Selected is - ' + selected);
-        const endpoint = api(selected);
+        console.log('Selected is - ' + selectedCurrencyFrom);
+        const endpoint = api(selectedCurrencyFrom,selectedCurrencyTo);
         
         fetch(endpoint)
           .then(function(response){
@@ -133,12 +152,23 @@
           });    
       };
       
+      const getSelectedCurrency = (tag) => {
+
+      const selected = document.querySelector(`${tag}`);
+        let selectedItem = selected.options[selected.selectedIndex];
+        return selectedItem;
+      };
+            
+     
       const populateCurrencies = () => {       
         currencies.map(currency=>{
             let option = document.createElement('option');
           option.value = currency.id;         
           option.innerHTML = currency.name;
-          document.querySelector('select').appendChild(option);
+          var selects = document.querySelectorAll('select');
+          console.log(selects);
+          // selects.appendChild(option);
+          $("select").append(option);
         })
       };
    
