@@ -7,3 +7,14 @@ body{
 	font-size: 20px;
 	background-color: #fafafa;
 }
+
+p{
+	font-size: 1em;
+	font-family: Lato;
+	width: 100%;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	text-align: center;
+	color: #000000;
+}
