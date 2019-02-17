@@ -151,4 +151,8 @@ p#currency_exchange_rate{
 		width: 200px;
 		height: 200px;
 	}
+
+	button.btn{
+		margin: 50px auto;
+	}
 }
