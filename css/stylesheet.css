@@ -108,7 +108,7 @@ p#conversion_result{
 	color: #1CB8DB;
 }
 
-{
+p#currency_exchange_rate{
 	font-family: 'Lato', sans-serif;
 	font-size: 0.8em;
 	text-align: center;
