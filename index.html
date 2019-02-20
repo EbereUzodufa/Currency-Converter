@@ -92,9 +92,10 @@
           'en-NG', { style: 'currency', currency: currencyUnitFrom, minimumFractionDigits: 0 }
         );
 
-        console.log('Value - '+value);
-        console.log('Amt - '+amt);
-        console.log('formatterTo - '+formatterTo);
+        // console.log('Value - '+value);
+        // console.log('Amt - '+amt);
+        // console.log('formatterTo - '+formatterTo);
+        
         display.textContent = formatterFrom.format(1) + ' - ' + formatterTo.format(value);
         result.textContent = formatterTo.format(value*amt);
         doneToasting();
@@ -116,9 +117,9 @@
         currencyUnitFrom = selectedCurrencyFrom;
         currencyUnitTo = selectedCurrencyTo;
 
-        console.log(selectedCurrencyTo);
-        console.log('currencyUnitTo - ' + currencyUnitTo);
-        console.log('currencyUnitFrom - ' + currencyUnitFrom);
+        // console.log(selectedCurrencyTo);
+        // console.log('currencyUnitTo - ' + currencyUnitTo);
+        // console.log('currencyUnitFrom - ' + currencyUnitFrom);
         
         if(!selectedCurrencyFrom || !selectedCurrencyTo || selectedCurrencyFrom.trim() === '' 
            || selectedCurrencyTo.trim() === ''|| !currencies.map(c => c.id).includes(selectedCurrencyFrom) || !currencies.map(c => c.id).includes(selectedCurrencyTo)) {
@@ -128,12 +129,12 @@
         
         btn.setAttribute('disabled', 'disabled');
         toast(`converting ...`);
-        console.log('Selected is - ' + selectedCurrencyFrom);
+        //console.log('Selected is - ' + selectedCurrencyFrom);
         const endpoint = api(selectedCurrencyFrom,selectedCurrencyTo);
         
         fetch(endpoint)
           .then(function(response){
-            console.log(response.clone().json());
+            //console.log(response.clone().json());
               return response.clone().json();
           }).then(apiResponse=>
           {
@@ -152,13 +153,13 @@
       const getCurrencies = () =>{
         fetch(apiBase + 'currencies?apiKey=9c0b22c6d643b5762584')
           .then((response)=>{
-            console.log(response.clone().json());
+            //console.log(response.clone().json());
             return response.clone().json();
           })
           .then(data=>{
           	console.log(data);
           	[currArray] = Object.values(data);
-          	console.log(currArray);
+          	//console.log(currArray);
           }).then(() => {
       		for(curr in currArray)
 	          {
@@ -178,7 +179,7 @@
           option.value = currency.id;         
           option.innerHTML = currency.name;
           var selects = document.querySelectorAll('select');
-          console.log(selects);
+          //console.log(selects);
           // selects.appendChild(option);
           $("select").append(option);
         })
