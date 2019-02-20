@@ -43,8 +43,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
       
-      const currencies = [];
-      
+      let currencies = [];
+	  let currArray = [];
       let currencyUnitFrom;
       let currencyUnitTo;
       const apiBase = 'https://free.currencyconverterapi.com/api/v6/';
@@ -150,10 +150,30 @@
       };
             
       const getCurrencies = () =>{
-        
+        fetch(apiBase + 'currencies?apiKey=9c0b22c6d643b5762584')
+          .then((response)=>{
+            console.log(response.clone().json());
+            return response.clone().json();
+          })
+          .then(data=>{
+          	console.log(data);
+          	[currArray] = Object.values(data);
+          	console.log(currArray);
+          }).then(() => {
+      		for(curr in currArray)
+	          {
+	          	//console.log('Loop');
+	          	currencies.push({
+	          		id: currArray[curr].id,
+	          		name: currArray[curr].currencyName,
+	          	});
+	          	//console.log(currencies);
+	          };
+          }).then(()=>{populateCurrencies()});
       };
      
-      const populateCurrencies = () => {       
+      const populateCurrencies = () => {
+      	console.log('Called me')
         currencies.map(currency=>{
             let option = document.createElement('option');
           option.value = currency.id;         
@@ -167,7 +187,9 @@
    
       const startApp = () => {
         // call populateCurrencies here
-        populateCurrencies();
+        
+        getCurrencies();
+        // populateCurrencies();
         
         // add a click listener to the button here
         const btn = document.querySelector('button');
