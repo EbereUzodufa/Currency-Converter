@@ -173,7 +173,6 @@
       };
      
       const populateCurrencies = () => {
-      	console.log('Called me')
         currencies.map(currency=>{
             let option = document.createElement('option');
           option.value = currency.id;         
@@ -186,10 +185,8 @@
       };
    
       const startApp = () => {
-        // call populateCurrencies here
-        
+        // call getCurrencies here
         getCurrencies();
-        // populateCurrencies();
         
         // add a click listener to the button here
         const btn = document.querySelector('button');
