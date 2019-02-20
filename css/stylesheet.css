@@ -149,6 +149,7 @@ p#currency_exchange_rate{
 	img.currency_country{
 		width: 100px;
 		height: 100px;
+		font-size: 0.6em;
 	}
 
 	button.btn{
