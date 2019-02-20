@@ -162,4 +162,9 @@ p#currency_exchange_rate{
 	p#currency_exchange_rate{
 		margin-bottom: 50px;
 	}
+
+	div.message, div.select {
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	}
 }
