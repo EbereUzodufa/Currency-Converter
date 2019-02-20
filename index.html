@@ -95,7 +95,7 @@
          const result = document.querySelector('#conversion_result');
          let amt = document.querySelector('#currency_amount').value;
         const formatterTo = new Intl.NumberFormat(
-          'en-NG', { style: 'currency', currency: currencyUnitTo, minimumFractionDigits: 4 }
+          'en-NG', { style: 'currency', currency: currencyUnitTo, minimumFractionDigits: 2 }
         );
 
         const formatterFrom = new Intl.NumberFormat(
