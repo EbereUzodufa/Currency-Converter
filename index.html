@@ -149,8 +149,6 @@
       };
       
       const getFlag = (currencyFrom,currencyTo)=>{
-      	//flag_currency_from
-      	//https://www.countryflags.io/ZA/flat/64.png
       	let currFromValue = currencyFrom.value;
       	let currToValue = currencyTo.value;
       	let currFromText = currencyFrom.innerHTML;
@@ -159,14 +157,12 @@
       	let flagCurrFrom = sliceToTwoLetters(currFromValue);
       	let flagCurrTo = sliceToTwoLetters(currToValue);
 
-      	let flagFromSrc = `https://www.countryflags.io/${flagCurrFrom}/flat/64.png`;
-      	let flagToSrc = `https://www.countryflags.io/${flagCurrTo}/flat/64.png`;
-
       	$('#flag_currency_from').attr('src',"https://www.countryflags.io/"+flagCurrFrom+"/flat/64.png");
       	$('#flag_currency_to').attr('src',"https://www.countryflags.io/"+ flagCurrTo + "/flat/64.png");
 
-      	console.log(flagFromSrc);
-      	console.log(flagToSrc);
+      	$('#flag_currency_from').attr('alt',"Flag of " + currFromText + " country.");
+      	$('#flag_currency_to').attr('alt',"Flag of " + currToText + " country.");
+
       }
 
       const sliceToTwoLetters = (word) =>{
