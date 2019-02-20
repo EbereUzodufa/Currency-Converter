@@ -95,7 +95,7 @@
         // console.log('Value - '+value);
         // console.log('Amt - '+amt);
         // console.log('formatterTo - '+formatterTo);
-        
+
         display.textContent = formatterFrom.format(1) + ' - ' + formatterTo.format(value);
         result.textContent = formatterTo.format(value*amt);
         doneToasting();
@@ -173,7 +173,16 @@
           }).then(()=>{populateCurrencies()});
       };
      
+      function compareCurrency(a,b){
+      	if (a.name > b.name)
+      		return 1
+      	if (a.name < b.name)
+      		return -1
+      	return 0
+      }
+
       const populateCurrencies = () => {
+      	currencies = currencies.sort(compareCurrency);
         currencies.map(currency=>{
             let option = document.createElement('option');
           option.value = currency.id;         
