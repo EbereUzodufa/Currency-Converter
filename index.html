@@ -130,6 +130,11 @@
         btn.setAttribute('disabled', 'disabled');
         toast(`converting ...`);
         //console.log('Selected is - ' + selectedCurrencyFrom);
+
+        // console.log(CurrencyFrom);
+
+        getFlag(CurrencyFrom, CurrencyTo);
+
         const endpoint = api(selectedCurrencyFrom,selectedCurrencyTo);
         
         fetch(endpoint)
@@ -143,6 +148,31 @@
           });    
       };
       
+      const getFlag = (currencyFrom,currencyTo)=>{
+      	//flag_currency_from
+      	//https://www.countryflags.io/ZA/flat/64.png
+      	let currFromValue = currencyFrom.value;
+      	let currToValue = currencyTo.value;
+      	let currFromText = currencyFrom.innerHTML;
+      	let currToText = currencyTo.innerHTML;
+
+      	let flagCurrFrom = sliceToTwoLetters(currFromValue);
+      	let flagCurrTo = sliceToTwoLetters(currToValue);
+
+      	let flagFromSrc = `https://www.countryflags.io/${flagCurrFrom}/flat/64.png`;
+      	let flagToSrc = `https://www.countryflags.io/${flagCurrTo}/flat/64.png`;
+
+      	$('#flag_currency_from').attr('src',"https://www.countryflags.io/"+flagCurrFrom+"/flat/64.png");
+      	$('#flag_currency_to').attr('src',"https://www.countryflags.io/"+ flagCurrTo + "/flat/64.png");
+
+      	console.log(flagFromSrc);
+      	console.log(flagToSrc);
+      }
+
+      const sliceToTwoLetters = (word) =>{
+      	return word.slice(0,2);
+      }
+
       const getSelectedCurrency = (tag) => {
 
       const selected = document.querySelector(`${tag}`);
@@ -183,6 +213,7 @@
 
       const populateCurrencies = () => {
       	currencies = currencies.sort(compareCurrency);
+      	//console.log(currencies);
         currencies.map(currency=>{
             let option = document.createElement('option');
           option.value = currency.id;         
