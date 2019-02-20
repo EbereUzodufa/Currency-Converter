@@ -16,7 +16,7 @@
 			<p id="convert_from">Convert From</p>
 			<div class="select-from select">
 				<input type="number" name="" id="currency_amount" placeholder="Enter the amount" value="1">
-				<select name="" id="currency-select-from" class="currency">
+				<select name="" id="currency-select-from" class="currency" onchange="getFlag()">
 					<option selected disabled>Choose Option</option>
 				</select>
 				<img id="flag_currency_from" class="currency_country" src="nigeria.png" alt="Flag of Country currency we are converting from">
@@ -25,7 +25,7 @@
 			</div>
 			<p id="convert_to">To</p>
 			<div class="select-to select">
-				<select name="" id="currency-select-to" class="currency">
+				<select name="" id="currency-select-to" class="currency" onchange="getFlag()">
 					<option selected disabled>Choose Option</option>
 				</select>
 				<img id="flag_currency_to" src="nigeria.png" alt="Flag of Country currency we are converting to" class="currency_country">
@@ -47,7 +47,17 @@
 	  let currArray = [];
       let currencyUnitFrom;
       let currencyUnitTo;
+
+      let CurrencyFrom;
+      let CurrencyTo;
+
       const apiBase = 'https://free.currencyconverterapi.com/api/v6/';
+
+ 	const getOption = () =>{
+
+        CurrencyFrom = getSelectedCurrency('select#currency-select-from');
+        CurrencyTo = getSelectedCurrency('select#currency-select-to');
+ 	}
 
     const api = (currencyFrom, currencyTo) => `
         ${apiBase}convert?q=${currencyFrom}_${currencyTo}&compact=ultra&apiKey=9c0b22c6d643b5762584`;
@@ -107,9 +117,8 @@
         
         const btn = event ? 
               event.target : document.querySelector('button');
-        
-        const CurrencyFrom = getSelectedCurrency('select#currency-select-from');
-        const CurrencyTo = getSelectedCurrency('select#currency-select-to');
+
+        getOption();
 
         const selectedCurrencyFrom = CurrencyFrom.value;
         const selectedCurrencyTo = CurrencyTo.value;
@@ -133,8 +142,6 @@
 
         // console.log(CurrencyFrom);
 
-        getFlag(CurrencyFrom, CurrencyTo);
-
         const endpoint = api(selectedCurrencyFrom,selectedCurrencyTo);
         
         fetch(endpoint)
@@ -148,20 +155,24 @@
           });    
       };
       
-      const getFlag = (currencyFrom,currencyTo)=>{
-      	let currFromValue = currencyFrom.value;
-      	let currToValue = currencyTo.value;
-      	let currFromText = currencyFrom.innerHTML;
-      	let currToText = currencyTo.innerHTML;
+      const getFlag = ()=>{
+      	// alert('jj');
+        getOption();
+        if (CurrencyFrom.disabled !== true) {
+        	let currFromValue = CurrencyFrom.value;
+	      	let currFromText = CurrencyFrom.innerHTML;
+	      	let flagCurrFrom = sliceToTwoLetters(currFromValue);
+	      	$('#flag_currency_from').attr('src',"https://www.countryflags.io/"+flagCurrFrom+"/flat/64.png");
+	      	$('#flag_currency_from').attr('alt',"Flag of " + currFromText + " country.");
+        }
 
-      	let flagCurrFrom = sliceToTwoLetters(currFromValue);
-      	let flagCurrTo = sliceToTwoLetters(currToValue);
-
-      	$('#flag_currency_from').attr('src',"https://www.countryflags.io/"+flagCurrFrom+"/flat/64.png");
-      	$('#flag_currency_to').attr('src',"https://www.countryflags.io/"+ flagCurrTo + "/flat/64.png");
-
-      	$('#flag_currency_from').attr('alt',"Flag of " + currFromText + " country.");
-      	$('#flag_currency_to').attr('alt',"Flag of " + currToText + " country.");
+        if (CurrencyTo.disabled !== true) {
+	      	let currToValue = CurrencyTo.value;
+	      	let currToText = CurrencyTo.innerHTML;
+	      	let flagCurrTo = sliceToTwoLetters(currToValue);
+	      	$('#flag_currency_to').attr('src',"https://www.countryflags.io/"+ flagCurrTo + "/flat/64.png");
+	      	$('#flag_currency_to').attr('alt',"Flag of " + currToText + " country.");
+      	}
 
       }
 
@@ -227,10 +238,22 @@
         
         // add a click listener to the button here
         const btn = document.querySelector('button');
+        const slct1 = document.getElementById('#currency-select-from');
+        const slct2 = document.getElementById('#currency-select-to');
         btn.addEventListener('click', function(event){
           convert(event);
           //alert('hello');
         });
+
+        // slct1.addEventListener('change', function(event){
+        // 	alert('slct1');
+        //   getFlag(event);
+        // });
+
+        // slct2.addEventListener('change', function(event){
+        // 	alert('slct2');
+        //   getFlag(event);
+        // });
       };
       
 
