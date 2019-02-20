@@ -73,8 +73,8 @@ select.currency{
 }
 
 img.currency_country{
-	width: 75px;
-	height: 75px;
+	width: 64px;
+	height: 64px;
 	margin: auto;
 }
 
@@ -147,8 +147,8 @@ p#currency_exchange_rate{
 	}
 
 	img.currency_country{
-		width: 200px;
-		height: 200px;
+		width: 100px;
+		height: 100px;
 	}
 
 	button.btn{
