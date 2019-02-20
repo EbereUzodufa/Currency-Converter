@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Pompiere|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Pompiere|Roboto|Averta');
 body, main, section, div.select{
 	display: flex;
 	flex-wrap: wrap;
@@ -66,7 +66,7 @@ input#currency_amount{
 }
 
 select.currency{
-	font-family: PoetsenOne;
+	font-family: 'Pompiere', sans-serif;
 	font-size: 1.2em;
 	text-align: center;
 	color: #000;
@@ -100,7 +100,7 @@ div.message{
 }
 
 p#conversion_result{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Averta', sans-serif;
 	font-weight: bold;
 	font-size: 1em;
 	text-align: center;
@@ -108,7 +108,7 @@ p#conversion_result{
 }
 
 p#currency_exchange_rate{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 0.8em;
 	text-align: center;
 	color: #000;
