@@ -148,10 +148,11 @@
           .then(function(response){
             //console.log(response.clone().json());
               return response.clone().json();
-          }).then(apiResponse=>
-          {
+          }).then(apiResponse=>{
             //console.log(apiResponse);
             conversionSucceeded(apiResponse)
+          }).catch(err=>{
+            console.log('Conversion Request Failed', err);
           });    
       };
       
@@ -207,7 +208,10 @@
 	          	});
 	          	//console.log(currencies);
 	          };
-          }).then(()=>{populateCurrencies()});
+          }).then(()=>{populateCurrencies()})
+            .catch(err=>{
+              console.log('getCurrencies Failed', err);
+            });
       };
      
       function compareCurrency(a,b){
