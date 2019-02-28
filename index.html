@@ -95,11 +95,11 @@
          const result = document.querySelector('#conversion_result');
          let amt = document.querySelector('#currency_amount').value;
         const formatterTo = new Intl.NumberFormat(
-          'en-NG', { style: 'currency', currency: currencyUnitTo, minimumFractionDigits: 2 }
+          'en-NG', { style: 'currency', currency: currencyUnitTo, minimumFractionDigits: 6 }
         );
 
         const formatterFrom = new Intl.NumberFormat(
-          'en-NG', { style: 'currency', currency: currencyUnitFrom, minimumFractionDigits: 0 }
+          'en-NG', { style: 'currency', currency: currencyUnitFrom, minimumFractionDigits: 2 }
         );
 
         // console.log('Value - '+value);
@@ -107,7 +107,7 @@
         // console.log('formatterTo - '+formatterTo);
 
         display.textContent = formatterFrom.format(1) + ' = ' + formatterTo.format(value);
-        result.textContent = formatterTo.format(value*amt);
+        result.textContent = formatterFrom.format(value*amt);
         doneToasting();
       };
       
