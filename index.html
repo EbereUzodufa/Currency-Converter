@@ -134,7 +134,7 @@
            || selectedCurrencyTo.trim() === ''|| !currencies.map(c => c.id).includes(selectedCurrencyFrom) || !currencies.map(c => c.id).includes(selectedCurrencyTo)) {
            	alert('Currency Missing. Please Choose');
         	return;
-    	}
+        }
         
         btn.setAttribute('disabled', 'disabled');
         toast(`converting ...`);
@@ -258,6 +258,15 @@
         // 	alert('slct2');
         //   getFlag(event);
         // });
+
+        //add event listener for the images if fail
+        const img = document.getElementsByClassName('currency_country');
+        
+        for (const imgFlag of img) {
+          imgFlag.addEventListener('error', function(){
+            imgFlag.src = 'no-photo.svg';
+          });
+        };
       };
       
 
