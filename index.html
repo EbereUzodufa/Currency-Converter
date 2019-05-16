@@ -107,7 +107,7 @@
         // console.log('formatterTo - '+formatterTo);
 
         display.textContent = formatterFrom.format(1) + ' = ' + formatterTo.format(value);
-        result.textContent = formatterFrom.format(value*amt);
+        result.textContent = formatterTo.format(value*amt);
         doneToasting();
       };
       
